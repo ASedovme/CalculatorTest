@@ -1,6 +1,7 @@
 package pro.sky.CalculatorTest.service.impl;
 
 import org.springframework.stereotype.Service;
+import pro.sky.CalculatorTest.exception.ZeroDividerException;
 import pro.sky.CalculatorTest.service.api.CalculatorService;
 
 @Service
@@ -23,6 +24,9 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     @Override
     public int divide(int num1, int num2) {
+        if (num2 == 0) {
+            throw new ZeroDividerException();
+        }
         return num1 / num2;
     }
 }
